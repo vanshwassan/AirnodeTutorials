@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "app_function": "module.api.app",
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "project_name": "testapi",
+        "runtime": "python3.9",
+        "s3_bucket": "zappa-p2syqd4tz"
+    }
+}
