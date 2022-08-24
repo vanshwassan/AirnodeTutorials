@@ -1,0 +1,137 @@
+{
+  "apiCredentials": [],
+  "chains": [
+    {
+      "authorizers": [
+        "0xf18c105D0375E80980e4EED829a4A68A539E6178"
+      ],
+      "blockHistoryLimit": 300,
+      "contracts": {
+        "AirnodeRrp": "0xa0AD79D995DdeeB18a14eAef56A549A04e3Aa1Bd"
+      },
+      "id": "3",
+      "maxConcurrency": 50,
+      "minConfirmations": 0,
+      "options": {
+        "baseFeeMultiplier": 2,
+        "fulfillmentGasLimit": 500000,
+        "priorityFee": {
+          "unit": "gwei",
+          "value": 3.12
+        },
+        "txType": "eip1559",
+        "withdrawalRemainder": {
+          "unit": "wei",
+          "value": 0
+        }
+      },
+      "providers": {
+        "ropsten1": {
+          "url": "${ROPSTEN_1_PROVIDER_URL}"
+        }
+      },
+      "type": "evm"
+    }
+  ],
+  "nodeSettings": {
+    "airnodeWalletMnemonic": "${AIRNODE_WALLET_MNEMONIC}",
+    "cloudProvider": {
+      "disableConcurrencyReservations": true,
+      "region": "us-east-2",
+      "type": "aws"
+    },
+    "heartbeat": {
+      "apiKey": "${HEARTBEAT_API_KEY}",
+      "enabled": true,
+      "id": "${HEARTBEAT_ID}",
+      "url": "${HEARTBEAT_URL}"
+    },
+    "httpGateway": {
+      "apiKey": "${HTTP_GATEWAY_API_KEY_BETWEEN_30_TO_120_CHARACTERS}",
+      "enabled": true,
+      "maxConcurrency": 20
+    },
+    "httpSignedDataGateway": {
+      "apiKey": "${HTTP_SIGNED_DATA_GATEWAY_API_KEY}",
+      "enabled": true,
+      "maxConcurrency": 20
+    },
+    "logFormat": "plain",
+    "logLevel": "INFO",
+    "nodeVersion": "0.7.2",
+    "stage": "peach-slug"
+  },
+  "ois": [
+    {
+      "apiSpecifications": {
+        "components": {
+          "securitySchemes": {}
+        },
+        "paths": {
+          "/getFoo": {
+            "get": {
+              "parameters": []
+            }
+          }
+        },
+        "security": {},
+        "servers": [
+          {
+            "url": "https://d41far5w57.execute-api.us-east-1.amazonaws.com/dev"
+          }
+        ]
+      },
+      "endpoints": [
+        {
+          "fixedOperationParameters": [],
+          "name": "GET_/getFoo",
+          "operation": {
+            "method": "get",
+            "path": "/getFoo"
+          },
+          "parameters": [],
+          "reservedParameters": [
+            {
+              "fixed": "bytes32",
+              "name": "_type"
+            },
+            {
+              "fixed": "foo",
+              "name": "_path"
+            },
+            {
+              "name": "_times"
+            }
+          ]
+        }
+      ],
+      "oisFormat": "1.0.0",
+      "title": "TestAPI",
+      "version": "0.1.0"
+    }
+  ],
+  "templates": [],
+  "triggers": {
+    "http": [
+      {
+        "endpointId": "0x6cde34ad1e6ee4f6d006cc469bdd8840da957c4a1a8075e75a58e1689220bc80",
+        "endpointName": "GET_/getFoo",
+        "oisTitle": "TestAPI"
+      }
+    ],
+    "httpSignedData": [
+      {
+        "endpointId": "0x6cde34ad1e6ee4f6d006cc469bdd8840da957c4a1a8075e75a58e1689220bc80",
+        "endpointName": "GET_/getFoo",
+        "oisTitle": "TestAPI"
+      }
+    ],
+    "rrp": [
+      {
+        "endpointId": "0x6cde34ad1e6ee4f6d006cc469bdd8840da957c4a1a8075e75a58e1689220bc80",
+        "endpointName": "GET_/getFoo",
+        "oisTitle": "TestAPI"
+      }
+    ]
+  }
+}
