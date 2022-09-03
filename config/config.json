@@ -34,7 +34,9 @@
   "nodeSettings": {
     "airnodeWalletMnemonic": "${AIRNODE_WALLET_MNEMONIC}",
     "cloudProvider": {
-      "type": "local"
+      "disableConcurrencyReservations": true,
+      "region": "us-east-1",
+      "type": "aws"
     },
     "heartbeat": {
       "apiKey": "${HEARTBEAT_API_KEY}",
