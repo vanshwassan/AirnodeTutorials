@@ -2,14 +2,12 @@
   "apiCredentials": [],
   "chains": [
     {
-      "authorizers": [
-        "0xf18c105D0375E80980e4EED829a4A68A539E6178"
-      ],
+      "authorizers": [],
       "blockHistoryLimit": 300,
       "contracts": {
         "AirnodeRrp": "0xa0AD79D995DdeeB18a14eAef56A549A04e3Aa1Bd"
       },
-      "id": "3",
+      "id": "80001",
       "maxConcurrency": 50,
       "minConfirmations": 0,
       "options": {
@@ -26,8 +24,8 @@
         }
       },
       "providers": {
-        "ropsten1": {
-          "url": "${ROPSTEN_1_PROVIDER_URL}"
+        "polygon_mumbaiTestnet1": {
+          "url": "${POLYGON_MUMBAI_TESTNET_1_PROVIDER_URL}"
         }
       },
       "type": "evm"
@@ -36,9 +34,7 @@
   "nodeSettings": {
     "airnodeWalletMnemonic": "${AIRNODE_WALLET_MNEMONIC}",
     "cloudProvider": {
-      "disableConcurrencyReservations": true,
-      "region": "us-east-2",
-      "type": "aws"
+      "type": "local"
     },
     "heartbeat": {
       "apiKey": "${HEARTBEAT_API_KEY}",
@@ -58,8 +54,8 @@
     },
     "logFormat": "plain",
     "logLevel": "INFO",
-    "nodeVersion": "0.7.2",
-    "stage": "peach-slug"
+    "nodeVersion": "0.7.3",
+    "stage": "dxfeed-airnode"
   },
   "ois": [
     {
@@ -68,35 +64,124 @@
           "securitySchemes": {}
         },
         "paths": {
-          "/getFoo": {
+          "/events.json": {
             "get": {
-              "parameters": []
+              "parameters": [
+                {
+                  "in": "query",
+                  "name": "events"
+                },
+                {
+                  "in": "query",
+                  "name": "fromTime"
+                },
+                {
+                  "in": "query",
+                  "name": "indent"
+                },
+                {
+                  "in": "query",
+                  "name": "source"
+                },
+                {
+                  "in": "query",
+                  "name": "symbols"
+                },
+                {
+                  "in": "query",
+                  "name": "timeout"
+                },
+                {
+                  "in": "query",
+                  "name": "toTime"
+                },
+                {
+                  "in": "query",
+                  "name": "format"
+                }
+              ]
             }
           }
         },
         "security": {},
         "servers": [
           {
-            "url": "https://d41far5w57.execute-api.us-east-1.amazonaws.com/dev"
+            "url": "https://tools.dxfeed.com/webservice/rest"
           }
         ]
       },
       "endpoints": [
         {
-          "fixedOperationParameters": [],
-          "name": "GET_/getFoo",
+          "fixedOperationParameters": [
+            {
+              "operationParameter": {
+                "in": "query",
+                "name": "format"
+              },
+              "value": "json"
+            }
+          ],
+          "name": "GET_/events.json",
           "operation": {
             "method": "get",
-            "path": "/getFoo"
+            "path": "/events.json"
           },
-          "parameters": [],
+          "parameters": [
+            {
+              "name": "event",
+              "operationParameter": {
+                "in": "query",
+                "name": "events"
+              }
+            },
+            {
+              "name": "fromTime",
+              "operationParameter": {
+                "in": "query",
+                "name": "fromTime"
+              }
+            },
+            {
+              "name": "indent",
+              "operationParameter": {
+                "in": "query",
+                "name": "indent"
+              }
+            },
+            {
+              "name": "source",
+              "operationParameter": {
+                "in": "query",
+                "name": "source"
+              }
+            },
+            {
+              "name": "symbol",
+              "operationParameter": {
+                "in": "query",
+                "name": "symbols"
+              }
+            },
+            {
+              "name": "timeout",
+              "operationParameter": {
+                "in": "query",
+                "name": "timeout"
+              }
+            },
+            {
+              "name": "toTime",
+              "operationParameter": {
+                "in": "query",
+                "name": "toTime"
+              }
+            }
+          ],
           "reservedParameters": [
             {
-              "fixed": "bytes32",
               "name": "_type"
             },
             {
-              "fixed": "foo",
               "name": "_path"
             },
             {
@@ -106,7 +191,7 @@
         }
       ],
       "oisFormat": "1.0.0",
-      "title": "TestAPI",
+      "title": "dxFeed",
       "version": "0.1.0"
     }
   ],
@@ -114,23 +199,23 @@
   "triggers": {
     "http": [
       {
-        "endpointId": "0x6cde34ad1e6ee4f6d006cc469bdd8840da957c4a1a8075e75a58e1689220bc80",
-        "endpointName": "GET_/getFoo",
-        "oisTitle": "TestAPI"
+        "endpointId": "0xf5a317ae9e58e19d5efef4445ff28169973a050e527ff5a15f70031264c1021f",
+        "endpointName": "GET_/events.json",
+        "oisTitle": "dxFeed"
       }
     ],
     "httpSignedData": [
       {
-        "endpointId": "0x6cde34ad1e6ee4f6d006cc469bdd8840da957c4a1a8075e75a58e1689220bc80",
-        "endpointName": "GET_/getFoo",
-        "oisTitle": "TestAPI"
+        "endpointId": "0xf5a317ae9e58e19d5efef4445ff28169973a050e527ff5a15f70031264c1021f",
+        "endpointName": "GET_/events.json",
+        "oisTitle": "dxFeed"
       }
     ],
     "rrp": [
       {
-        "endpointId": "0x6cde34ad1e6ee4f6d006cc469bdd8840da957c4a1a8075e75a58e1689220bc80",
-        "endpointName": "GET_/getFoo",
-        "oisTitle": "TestAPI"
+        "endpointId": "0xf5a317ae9e58e19d5efef4445ff28169973a050e527ff5a15f70031264c1021f",
+        "endpointName": "GET_/events.json",
+        "oisTitle": "dxFeed"
       }
     ]
   }
