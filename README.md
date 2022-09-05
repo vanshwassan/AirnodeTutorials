@@ -56,3 +56,5 @@ docker run -it --rm \
       -v "$(pwd)/output:/app/output" \
       api3/airnode-deployer:0.7.3 deploy
 ```
+
+# Part 2 - Making the Requester Contract and calling the Airnode
