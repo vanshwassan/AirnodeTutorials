@@ -65,9 +65,9 @@ docker run -it --rm \
 
 - Using [Remix IDE](https://remix.ethereum.org) to deploy and call the Requester contract on the Polygon Mumbai Testnet.
 
-- Wallet with enough Matic to sponsor the sponsorWallet. You can get some from the [Mumbai Faucet](https://mumbaifaucet.com/).
+- Wallet with enough Matic to sponsor the ```sponsorWallet```. You can get some from the [Mumbai Faucet](https://mumbaifaucet.com/).
 
-## Setting up the Remix IDE
+## Deploying the Requester
 
 - Compile and Deploy the ```Requester.sol``` contract on Remix. Select the ```_rrpAddress``` from [here](https://docs.api3.org/airnode/v0.7/reference/airnode-addresses.html).
 
@@ -94,4 +94,4 @@ Fund the ```sponsorWallet``` with some test MATIC
 
 - Pass in your ```airnode```, ```endpointID```, ```sponsor``` (The Requester contract itself) and the ```sponsorWallet``` (derived from the Airnode CLI) to call the ```makeRequest``` function.
 
-- Check the latest transaction from the ```sponsorWallet``` and go to logs. The requested data will be encoded in ```bytes32```.
+- Check the latest transaction from the ```sponsorWallet``` and go to its logs. The requested data will be encoded in ```bytes32```.
