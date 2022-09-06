@@ -7,6 +7,7 @@ import "@api3/airnode-protocol/contracts/rrp/requesters/RrpRequesterV0.sol";
 
 contract Requester is RrpRequesterV0 {
 
+// Defining the Parameters for the Request
     bytes public parameters =
         abi.encode(
             bytes32("1SSSS"),
@@ -24,6 +25,8 @@ contract Requester is RrpRequesterV0 {
     mapping(bytes32 => int256) public fulfilledData;
 
     constructor(address _rrpAddress) RrpRequesterV0(_rrpAddress) {}
+
+// The main makeRequest function that will trigger the Airnode request.
 
     function makeRequest(
         address airnode,
