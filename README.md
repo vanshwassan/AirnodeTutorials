@@ -61,7 +61,7 @@ docker run -it --rm \
 
 ## Requirements
 
-- Set up the [Airnode Monorepo](). install and build all the dependencies and packages to be able to access the Airnode CLI.
+- Clone and set up the [Airnode Monorepo](). install and build all the dependencies and packages to be able to access the Airnode CLI.
 
 - Using [Remix IDE](https://remix.ethereum.org) to deploy and call the Requester contract on the Polygon Mumbai Testnet.
 
