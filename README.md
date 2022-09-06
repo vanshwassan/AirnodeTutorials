@@ -73,6 +73,7 @@ docker run -it --rm \
 
 - Derive your ```sponsorWallet``` address using the Airnode CLI.
 
+Note: The ```sponsor-address``` here will be the address of the Requester Contract that you just deployed.
 #### Linux:
 ```
 npx @api3/airnode-admin derive-sponsor-wallet-address \
