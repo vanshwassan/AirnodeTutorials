@@ -57,4 +57,40 @@ docker run -it --rm \
       api3/airnode-deployer:0.7.3 deploy
 ```
 
-# Part 2 - Making the Requester Contract and calling the Airnode
+# Part 2 - Coding the Requester Contract and calling the Airnode
+
+## Requirements
+
+- Set up the [Airnode Monorepo](). install and build all the dependencies and packages to be able to access the Airnode CLI.
+
+- Using [Remix IDE](https://remix.ethereum.org) to deploy and call the Requester contract on the Polygon Mumbai Testnet.
+
+- Wallet with enough Matic to sponsor the sponsorWallet. You can get some from the [Mumbai Faucet](https://mumbaifaucet.com/).
+
+## Setting up the Remix IDE
+
+- Compile and Deploy the ```Requester.sol``` contract on Remix. Select the ```_rrpAddress``` from [here](https://docs.api3.org/airnode/v0.7/reference/airnode-addresses.html).
+
+- Derive your ```sponsorWallet``` address using the Airnode CLI.
+
+#### Linux:
+```
+npx @api3/airnode-admin derive-sponsor-wallet-address \
+  --airnode-xpub xpub6CUGRUo... \
+  --airnode-address 0xe1...dF05s \
+  --sponsor-address 0xF4...dDyu9
+```
+
+#### Windows:
+```
+npx @api3/airnode-admin derive-sponsor-wallet-address ^
+  --airnode-xpub xpub6CUGRUo... ^
+  --airnode-address 0xe1...dF05s ^
+  --sponsor-address 0xF4...dDyu9
+```
+
+Fund the ```sponsorWallet``` with some test MATIC
+
+- Pass in your ```airnode```, ```endpointID```, ```sponsor``` (The Requester contract itself) and the ```sponsorWallet``` (derived from the Airnode CLI) to call the ```makeRequest``` function.
+
+- Check the latest transaction from the ```sponsorWallet``` and go to logs. The requested data will be encoded in ```bytes32```.
