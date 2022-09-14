@@ -107,4 +107,4 @@ Fund the ```sponsorWallet``` with some test MATIC
 - Pass in your ```airnode```, ```endpointID```, ```sponsor``` (The Requester contract itself), ```sponsorWallet``` (derived from the Airnode CLI) and ```parameters``` to call the ```makeRequest``` function.
 
 - Check the latest transaction from the ```sponsorWallet``` and go to its logs. The requested data will be encoded in ```bytes32```.
-- You can get the ```requestId``` and then pass it through the ```fulfilledData``` function to get the decoded output.
+- You can get the ```requestId``` from the transaction logs and then pass it through the ```fulfilledData``` function to get the decoded output.
