@@ -6,21 +6,6 @@ import "@api3/airnode-protocol/contracts/rrp/requesters/RrpRequesterV0.sol";
 // A requester that will return the Tesla Stock Price by calling the dxFeed airnode.
 
 contract Requester is RrpRequesterV0 {
-
-// Defining the Parameters for the Request
-    bytes public parameters =
-        abi.encode(
-            bytes32("1SSSS"),
-            bytes32("symbol"),
-            "TSLA",
-            bytes32("event"),
-            "Trade",
-            bytes32("_path"),
-            "Trade.TSLA.price",
-            bytes32("_type"),
-            "int256"
-        );
-
     mapping(bytes32 => bool) public incomingFulfillments;
     mapping(bytes32 => int256) public fulfilledData;
 
@@ -32,7 +17,8 @@ contract Requester is RrpRequesterV0 {
         address airnode,
         bytes32 endpointId,
         address sponsor,
-        address sponsorWallet
+        address sponsorWallet,
+        bytes calldata parameters
         
     ) external {
         bytes32 requestId = airnodeRrp.makeFullRequest(
