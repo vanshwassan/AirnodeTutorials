@@ -1,3 +1,9 @@
+# Airnode RRP Requester Tutorial
+Run the following command to install all the dependencies:
+```
+npm install
+```
+
 # Part 1 - Deploying the Airnode
 
 ## Requirements
@@ -67,6 +73,12 @@ docker run -it --rm \
 
 - Wallet with enough Matic to sponsor the ```sponsorWallet```. You can get some from the [Mumbai Faucet](https://mumbaifaucet.com/).
 
+## Encoding the Parameters
+- Head on to ```src/encodeParams.js``` and edit it to encode your parameters.
+- To get the encoded parameters:
+```
+node .\src\encodeParams.js
+```
 ## Deploying the Requester
 
 - Compile and Deploy the ```Requester.sol``` contract on Remix. Select the ```_rrpAddress``` from [here](https://docs.api3.org/airnode/v0.7/reference/airnode-addresses.html).
@@ -92,6 +104,7 @@ npx @api3/airnode-admin derive-sponsor-wallet-address ^
 
 Fund the ```sponsorWallet``` with some test MATIC
 
-- Pass in your ```airnode```, ```endpointID```, ```sponsor``` (The Requester contract itself) and the ```sponsorWallet``` (derived from the Airnode CLI) to call the ```makeRequest``` function.
+- Pass in your ```airnode```, ```endpointID```, ```sponsor``` (The Requester contract itself), ```sponsorWallet``` (derived from the Airnode CLI) and ```parameters``` to call the ```makeRequest``` function.
 
 - Check the latest transaction from the ```sponsorWallet``` and go to its logs. The requested data will be encoded in ```bytes32```.
+- You can get the ```requestId``` and then pass it through the ```fulfilledData``` function to get the decoded output.
